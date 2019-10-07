@@ -48,14 +48,17 @@ bastion]#cat towerconfig-variables
         EMAIL=${RH_MAIL_ID}
         “
         
-bastion]# source towerconfig-variables
+
+   bastion]# source towerconfig-variables
+   
+    bastion]#cat  main.yml
+
+     - import_playbook: site-setup-workstation.yml
+     - import_playbook: site-config-tower.yml 
 
 
-bastion]# ansible-playbook   main.yml -e "${GLOBAL_VARS}"
-
-- import_playbook: site-setup-workstation.yml
-- import_playbook: site-config-tower.yml 
-
+    bastion]# ansible-playbook   main.yml -e "${GLOBAL_VARS}"
+   
 Execute CI/CD work flow:
 
         login to one of the Ansible tower and execute cicd_workflow work flow
