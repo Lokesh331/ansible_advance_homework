@@ -1,18 +1,18 @@
 ==== Ansible Tower Config
 
-        laptop]# scp -i /home/<username>/.ssh/your-key.pem /home/<username>/.ssh/your-key.pem username  company.name@bastion.<GUID>.example.com:/tmp
+    laptop]# scp -i /home/<username>/.ssh/your-key.pem /home/<username>/.ssh/your-key.pem username  company.name@bastion.<GUID>.example.com:/tmp
 
         laptop]# ssh -i /home/<username>/.ssh/your-key.pem  username-company.name@bastion.<GUID>.example.com
 
         bastion]$  sudo -i
 
-bastion]# cp /tmp/<your-key.pem>  /root/.ssh/mykey.pem
+        bastion]# cp /tmp/<your-key.pem>  /root/.ssh/mykey.pem
 
-bastion]# chmod 0400 /root/.ssh/mykey.pem;chown root:root /root/.ssh/mykey.pem
+        bastion]# chmod 0400 /root/.ssh/mykey.pem;chown root:root /root/.ssh/mykey.pem
 
-bastion]# git clone https://github.com/Lokesh331/ansible_advance_homework.git
+        bastion]# git clone https://github.com/Lokesh331/ansible_advance_homework.git
 
-bastion]# cd ansible_advance_homework
+        bastion]# cd ansible_advance_homework
 
 Update the variables as per your Lab environment
 
