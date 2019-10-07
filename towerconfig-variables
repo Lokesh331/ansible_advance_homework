@@ -22,4 +22,4 @@ GLOBAL_VARS="
         osp_GUID=${OSP_GUID}
         REGION_NAME=${REGION}
         EMAIL=${RH_MAIL_ID}
-        “
+        "
