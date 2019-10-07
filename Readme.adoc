@@ -55,18 +55,22 @@ bastion]# ansible-playbook   main.yml -e "${GLOBAL_VARS}"
 
 Execute CI/CD work flow:
 
-login to one of the Ansible tower and execute cicd_workflow work flow
+        login to one of the Ansible tower and execute cicd_workflow work flow
 
-https://tower(1-3).{{TOWER_GUID}}.example.opentlc.com
+        https://tower(1-3).{{TOWER_GUID}}.example.opentlc.com
 
-Username:admin
-Password:<default ansible tower password>
+        Username:admin
+        Password:<default ansible tower password>
 
-Go to templates and select cicd_workflow and click on rocket symbol
+        Go to templates and select cicd_workflow and click on rocket symbol
+
 
 For Validating grade:
+
         OSP_GUID=<openstack env GUID>
+ 
         ANSIBLE_ADVANCE_GUID=<Three tier App aws env GUID>
+        
         ansible-playbook grading-script.yml -e OSP_GUID=${OSP_GUID} -e ANSIBLE_ADVANCE_GUID=${ANSIBLE_ADVANCE_GUID} 
 
 
