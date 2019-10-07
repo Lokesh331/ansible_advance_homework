@@ -1,6 +1,6 @@
 ==== Ansible Tower Config
 
- laptop]# scp -i /home/<username>/.ssh/your-key.pem /home/<username>/.ssh/your-key.pem username  company.name@bastion.<GUID>.example.com:/tmp
+laptop]# scp -i /home/<username>/.ssh/your-key.pem /home/<username>/.ssh/your-key.pem username  company.name@bastion.<GUID>.example.com:/tmp
 
         laptop]# ssh -i /home/<username>/.ssh/your-key.pem  username-company.name@bastion.<GUID>.example.com
 
@@ -74,7 +74,7 @@ For Validating grade:
 ansible-playbook grading-script.yml -e OSP_GUID=${OSP_GUID} -e ANSIBLE_ADVANCE_GUID=${ANSIBLE_ADVANCE_GUID} 
 
 --------------------------------------------------------------------------------------------------------------------------------------
-
+==========
 
 
 .List of Playbooks
