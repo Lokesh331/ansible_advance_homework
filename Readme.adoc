@@ -54,7 +54,6 @@ bastion]# ansible-playbook   main.yml -e "${GLOBAL_VARS}"
 - import_playbook: site-config-tower.yml 
 
 Execute CI/CD work flow:
-----------------------------------
 
 login to one of the Ansible tower and execute cicd_workflow work flow
 
@@ -65,9 +64,8 @@ Password:<default ansible tower password>
 
 Go to templates and select cicd_workflow and click on rocket symbol
 
-
 For Validating grade:
----------------------
+
 
         OSP_GUID=<openstack env GUID>
 
