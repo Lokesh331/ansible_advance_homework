@@ -1,21 +1,63 @@
 ==== Ansible Tower Config
 
+laptop]# scp -i /home/<username>/.ssh/your-key.pem /home/<username>/.ssh/your-key.pem username  company.name@bastion.<GUID>.example.com:/tmp
+laptop]# ssh -i /home/<username>/.ssh/your-key.pem  username-company.name@bastion.<GUID>.example.com
+bastion]$  sudo -i
+bastion]# cp /tmp/<your-key.pem>  /root/.ssh/mykey.pem
+bastion]# chmod 0400 /root/.ssh/mykey.pem;chown root:root /root/.ssh/mykey.pem
+bastion]# git clone https://github.com/Lokesh331/ansible_advance_homework.git
+bastion]# cd ansible_advance_homework
 
-* From the cloned repo run `site-config-tower.yml` playbook to create job templates and workflow template.
+Update the variables as per your Lab environment
 
-[source,text]
-----
-[bastion]$ sudo -i
-[bastion]# cd ansible_advance_homework
-[bastion]# TOWER_GUID=<Ansible Tower Homework GUID from mail>
-[bastion]# OSP_GUID=<Openstack for Ansible GUID from mail>
-[bastion]# OPENTLC_LOGIN=<username-company.com>
-[bastion]# OPENTLC_PASSWORD=<your openlc account password>
-[bastion]# GITHUB_REPO=https://github.com/<githubhandler>/ansible_advance_homework
-[bastion]# JQ_REPO_BASE=http://www.opentlc.com/download/ansible_bootcamp
-[bastion]# REGION=<enter region name example us-east-1>
-[bastion]# RH_MAIL_ID=<your mail id for dynamic inventory tag>
-[bastion]# ansible-playbook site-config-tower.yml -e tower_GUID=${TOWER_GUID} -e osp_GUID=${OSP_GUID} -e opentlc_login=${OPENTLC_LOGIN} -e path_to_opentlc_key=/root/.ssh/mykey.pem -e param_repo_base=${JQ_REPO_BASE} -e opentlc_password=${OPENTLC_PASSWORD} -e REGION_NAME=${REGION} -e EMAIL=${RH_MAIL_ID} -e github_repo=${GITHUB_REPO}
+bastion]#cat towerconfig-variables
+TOWER_GUID=<bastion env GUID>
+OSP_GUID=<openstack env GUID>
+PRIVATE_KEY=~/.ssh/mykey.pem
+OPENTLC_LOGIN=<opentlc-username>
+OPENTLC_PASSWORD=<password>
+GITHUB_REPO=https://github.com/Lokesh331/ansible_advance_homework.git
+JQ_REPO_BASE=http://www.opentlc.com/download/ansible_bootcamp
+REGION=us-east-1
+RH_MAIL_ID=<username@company.name>
+
+GLOBAL_VARS="
+        OSP_GUID=${OSP_GUID}
+        GUID=${TOWER_GUID}
+        ansible_user=${OPENTLC_LOGIN}
+        ansible_ssh_private_key_file=${PRIVATE_KEY}
+        opentlc_login=${OPENTLC_LOGIN}
+        opentlc_password=${OPENTLC_PASSWORD}
+        param_repo_base=${GITHUB_REPO}
+        tower_GUID=${TOWER_GUID}
+        path_to_opentlc_key=${PRIVATE_KEY}
+        github_repo=${GITHUB_REPO}
+        osp_GUID=${OSP_GUID}
+        REGION_NAME=${REGION}
+        EMAIL=${RH_MAIL_ID}
+        “
+bastion]# source towerconfig-variables
+
+bastion]# ansible-playbook   main.yml -e "${GLOBAL_VARS}"
+- import_playbook: site-setup-workstation.yml
+- import_playbook: site-config-tower.yml 
+
+login to one of the Ansible tower and execute cicd_workflow work flow
+
+https://tower(1-3).{{TOWER_GUID}}.example.opentlc.com
+
+Username:admin
+Password:<default ansible tower password>
+
+Go to templates and select cicd_workflow and click on rocket symbol
+
+For Validating grade
+
+OSP_GUID=<openstack env GUID>
+ANSIBLE_ADVANCE_GUID=<Three tier App aws env GUID>
+ansible-playbook grading-script.yml -e OSP_GUID=${OSP_GUID} -e ANSIBLE_ADVANCE_GUID=${ANSIBLE_ADVANCE_GUID} 
+
+
 ----
 
 
@@ -23,6 +65,7 @@
 [%header,cols=2*]
 |===
 | Files or dir | Purpose
+| main.yml | main playbook to call site-setup-workstation.yml and site-osp-instances.yml playbooks
 | app-tier | Install application server role
 | db-tier  | Install postgressql server for database role
 | lb-tier  | Install HA proxy role
