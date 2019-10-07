@@ -1,2 +1,0 @@
-- import_playbook: site-setup-workstation.yml
-- import_playbook: site-config-tower.yml 
