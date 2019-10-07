@@ -1,10 +1,10 @@
 ==== Ansible Tower Config
 
-laptop]# scp -i /home/<username>/.ssh/your-key.pem /home/<username>/.ssh/your-key.pem username  company.name@bastion.<GUID>.example.com:/tmp
+        laptop]# scp -i /home/<username>/.ssh/your-key.pem /home/<username>/.ssh/your-key.pem username  company.name@bastion.<GUID>.example.com:/tmp
 
-laptop]# ssh -i /home/<username>/.ssh/your-key.pem  username-company.name@bastion.<GUID>.example.com
+        laptop]# ssh -i /home/<username>/.ssh/your-key.pem  username-company.name@bastion.<GUID>.example.com
 
-bastion]$  sudo -i
+        bastion]$  sudo -i
 
 bastion]# cp /tmp/<your-key.pem>  /root/.ssh/mykey.pem
 
