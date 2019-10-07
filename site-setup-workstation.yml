@@ -6,6 +6,26 @@
     add_host:
        name: "workstation-{{OSP_GUID}}.rhpds.opentlc.com"
        group: workstation
+- hosts: localhost
+  tasks:
+  - name: download public and private keys
+    get_url:
+      url: https://www.opentlc.com/download/ansible_bootcamp/openstack_keys/openstack.pem
+      dest: /root/.ssh/openstack.pem
+      force: yes
+      mode: 0400
+      owner: root
+      group: root
+
+  - name: download public key
+    get_url:
+      url: https://www.opentlc.com/download/ansible_bootcamp/openstack_keys/openstack.pub
+      dest: /root/.ssh/openstack.pub
+      force: yes
+      mode: 0400
+      owner: root
+      group: root
+ 
 
 
 - hosts: workstation
