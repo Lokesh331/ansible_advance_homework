@@ -1,4 +1,4 @@
-- hosts: tag:instance_filter=three-tier-app-lokesv17@in.ibm.com
+- hosts: tag_instance_filter_three_tier_app_lokesv17_in_ibm_com
   gather_facts: false
   tasks:
   - name: Check the instances status
