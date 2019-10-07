@@ -16,18 +16,20 @@ bastion]# cd ansible_advance_homework
 
 Update the variables as per your Lab environment
 
-bastion]#cat towerconfig-variables
-TOWER_GUID=<bastion env GUID>
-OSP_GUID=<openstack env GUID>
-PRIVATE_KEY=~/.ssh/mykey.pem
-OPENTLC_LOGIN=<opentlc-username>
-OPENTLC_PASSWORD=<password>
-GITHUB_REPO=https://github.com/Lokesh331/ansible_advance_homework.git
-JQ_REPO_BASE=http://www.opentlc.com/download/ansible_bootcamp
-REGION=us-east-1
-RH_MAIL_ID=<username@company.name>
 
-GLOBAL_VARS="
+bastion]#cat towerconfig-variables
+
+        TOWER_GUID=<bastion env GUID>
+        OSP_GUID=<openstack env GUID>
+        PRIVATE_KEY=~/.ssh/mykey.pem
+        OPENTLC_LOGIN=<opentlc-username>
+        OPENTLC_PASSWORD=<password>
+        GITHUB_REPO=https://github.com/Lokesh331/ansible_advance_homework.git
+        JQ_REPO_BASE=http://www.opentlc.com/download/ansible_bootcamp
+        REGION=us-east-1
+        RH_MAIL_ID=<username@company.name>
+
+        GLOBAL_VARS="
         OSP_GUID=${OSP_GUID}
         GUID=${TOWER_GUID}
         ansible_user=${OPENTLC_LOGIN}
@@ -42,11 +44,15 @@ GLOBAL_VARS="
         REGION_NAME=${REGION}
         EMAIL=${RH_MAIL_ID}
         “
+        
 bastion]# source towerconfig-variables
 
+
 bastion]# ansible-playbook   main.yml -e "${GLOBAL_VARS}"
+
 - import_playbook: site-setup-workstation.yml
 - import_playbook: site-config-tower.yml 
+
 
 login to one of the Ansible tower and execute cicd_workflow work flow
 
@@ -60,7 +66,9 @@ Go to templates and select cicd_workflow and click on rocket symbol
 For Validating grade
 
 OSP_GUID=<openstack env GUID>
+
 ANSIBLE_ADVANCE_GUID=<Three tier App aws env GUID>
+
 ansible-playbook grading-script.yml -e OSP_GUID=${OSP_GUID} -e ANSIBLE_ADVANCE_GUID=${ANSIBLE_ADVANCE_GUID} 
 
 
