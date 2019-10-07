@@ -49,15 +49,14 @@ bastion]#cat towerconfig-variables
         “
         
 
-   bastion]# source towerconfig-variables
+ bastion]# source towerconfig-variables
    
-    bastion]#cat  main.yml
+ bastion]# ansible-playbook site-setup-workstation.yml -e OSP_GUID=${OSP_GUID} --private-key=/root/.ssh/mykey.pem -u ${OPENTLC_LOGIN}
+    
+ bastion]# source towerconfig-variables
+    
+ bastion]# ansible-playbook site-config-tower.yml -e tower_GUID=${TOWER_GUID} -e osp_GUID=${OSP_GUID} -e opentlc_login=${OPENTLC_LOGIN} -e path_to_opentlc_key=/root/.ssh/mykey.pem -e param_repo_base=${JQ_REPO_BASE} -e opentlc_password=${OPENTLC_PASSWORD} -e REGION_NAME=${REGION} -e EMAIL=${RH_MAIL_ID} -e github_repo=${GITHUB_REPO}
 
-       - import_playbook: site-setup-workstation.yml
-       - import_playbook: site-config-tower.yml 
-
-
-   bastion]# ansible-playbook   main.yml -e "${GLOBAL_VARS}"
    
 Execute CI/CD work flow:
 
@@ -85,7 +84,6 @@ For Validating grade:
 [%header,cols=2*]
 |===
 | Files or dir | Purpose
-| main.yml | main playbook to call site-setup-workstation.yml and site-osp-instances.yml playbooks
 | app-tier | Install application server role
 | db-tier  | Install postgressql server for database role
 | lb-tier  | Install HA proxy role
