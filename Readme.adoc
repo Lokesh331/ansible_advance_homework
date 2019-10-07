@@ -53,11 +53,11 @@ bastion]#cat towerconfig-variables
    
     bastion]#cat  main.yml
 
-     - import_playbook: site-setup-workstation.yml
-     - import_playbook: site-config-tower.yml 
+       - import_playbook: site-setup-workstation.yml
+       - import_playbook: site-config-tower.yml 
 
 
-    bastion]# ansible-playbook   main.yml -e "${GLOBAL_VARS}"
+   bastion]# ansible-playbook   main.yml -e "${GLOBAL_VARS}"
    
 Execute CI/CD work flow:
 
