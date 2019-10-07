@@ -12,6 +12,7 @@
         bastion]# chmod 0400 /root/.ssh/mykey.pem;chown root:root /root/.ssh/mykey.pem
         
 Clone your ansible_advance_homework code from github
+
         bastion]# git clone https://github.com/Lokesh331/ansible_advance_homework.git
 
         bastion]# cd ansible_advance_homework
