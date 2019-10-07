@@ -1,6 +1,6 @@
 ==== Ansible Tower Config
 
-laptop]# scp -i /home/<username>/.ssh/your-key.pem /home/<username>/.ssh/your-key.pem username  company.name@bastion.<GUID>.example.com:/tmp
+        laptop]# scp -i /home/<username>/.ssh/your-key.pem /home/<username>/.ssh/your-key.pem username  company.name@bastion.<GUID>.example.com:/tmp
 
         laptop]# ssh -i /home/<username>/.ssh/your-key.pem  username-company.name@bastion.<GUID>.example.com
 
@@ -65,16 +65,10 @@ Password:<default ansible tower password>
 Go to templates and select cicd_workflow and click on rocket symbol
 
 For Validating grade:
-
-
         OSP_GUID=<openstack env GUID>
-
         ANSIBLE_ADVANCE_GUID=<Three tier App aws env GUID>
+        ansible-playbook grading-script.yml -e OSP_GUID=${OSP_GUID} -e ANSIBLE_ADVANCE_GUID=${ANSIBLE_ADVANCE_GUID} 
 
-ansible-playbook grading-script.yml -e OSP_GUID=${OSP_GUID} -e ANSIBLE_ADVANCE_GUID=${ANSIBLE_ADVANCE_GUID} 
-
---------------------------------------------------------------------------------------------------------------------------------------
-==========
 
 
 .List of Playbooks
